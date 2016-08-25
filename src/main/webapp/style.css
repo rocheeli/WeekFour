@@ -1,0 +1,54 @@
+@CHARSET "ISO-8859-1";
+header{
+	text-align:center;
+	font-size: 32pt;
+	font-family: lucida;
+	color:white;
+	background-color:black;
+}
+
+html { 
+  background: url(images/popcorn.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+ img {
+    border-radius: 50%;
+}
+
+table{
+	background-color: black;
+	color:white;
+	text-align: center;
+	table-layout: center;
+	margin:auto;
+	margin-top: 5em;
+	font-size: 18pt;
+
+}
+table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+form{
+	margin-top: 5em;
+	float:left;
+	font-weight: bold;
+}
+.one{
+	position: static;
+}
+.two {
+	float:left;
+	margin-top: 1px;
+	
+
+}
+.three {
+	float:left;
+	margin-bottom: 400px;
+}
