@@ -51,4 +51,21 @@ form{
 .three {
 	float:left;
 	margin-bottom: 400px;
+	margin-left:10em;
+}
+h2{
+	text-align: center;
+	text-decoration: underline;
+	font-weight: bold;
+	text-decoration-style: 
+}
+.five{
+	float:right;
+	margin-right: 30em;
+}
+.four{
+	margin-left: 55em;
+}
+.three,.four,.five{
+	font-size: 12pt
 }

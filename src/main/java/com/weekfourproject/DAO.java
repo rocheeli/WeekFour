@@ -2,6 +2,7 @@ package com.weekfourproject;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DAO {
 
@@ -13,6 +14,8 @@ public class DAO {
 	static Statement STMT = null;
 	static PreparedStatement PREP_STMT = null;
 	static ResultSet RES_SET = null;
+	
+	static Scanner sc = new Scanner(System.in);
 
 	public static void connToDB() {
 
@@ -58,5 +61,131 @@ public class DAO {
 		}
 
 	}
+	public static void writeToDB(){
+		
+		Movie movieToAdd = new Movie();
+		movieToAdd = aboutTheMovie();
+		connToDB();
+		try {
+			PREP_STMT = CONN.prepareStatement(insertToDB);
+			
+			PREP_STMT.setString(1, movieToAdd.getMovieTitle());
+			PREP_STMT.setString(2, movieToAdd.getMovieRating());
+			PREP_STMT.setString(3, movieToAdd.getMovieGenre());
+			PREP_STMT.setInt(4, movieToAdd.getMovieLength());
+			
+			PREP_STMT.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
+	private static String insertToDB = "INSERT INTO `movies`.`movies`"
+		+ "(title, rating, genre, length)"
+		+ " VALUES "
+		+ "(?, ?, ?, ?)";
+	
+	public static void removeFromDB(){
+		
+		Movie movieToDelete = new Movie();
+		movieToDelete = removedMovie();
+		connToDB();
+		try {
+			PREP_STMT = CONN.prepareStatement(deleteFromDB);
+			PREP_STMT.setString(1,movieToDelete.getMovieID());
+			PREP_STMT.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static String deleteFromDB = "DELETE FROM `movies`.`movies`"
+		+ "WHERE"
+		+ "(movie_id)"
+		+ "= (?)";
+	
+public static void updateDB(){
+		
+		Movie movieToUpdate = new Movie();
+		movieToUpdate = changeTheMovie();
+		connToDB();
+		try {
+			PREP_STMT = CONN.prepareStatement(updateToDB);
+			
+			PREP_STMT.setString(1, movieToUpdate.getMovieID());
+			PREP_STMT.setString(2, movieToUpdate.getMovieTitle());
+			PREP_STMT.setString(3, movieToUpdate.getMovieRating());
+			PREP_STMT.setString(4, movieToUpdate.getMovieGenre());
+			PREP_STMT.setInt(5, movieToUpdate.getMovieLength());
+			PREP_STMT.setString(6, movieToUpdate.getMovieID());
+			
+			PREP_STMT.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+
+	private static Movie changeTheMovie() {
+		
+		Movie movieToUpdate = new Movie();
+		System.out.println("What is the Movie ID?");
+		movieToUpdate.setMovieID(sc.nextLine());
+		
+		System.out.println("What is the movie's new title?");
+		movieToUpdate.setMovieTitle(sc.nextLine());
+		
+		System.out.println("What is the movie's new rating?");
+		movieToUpdate.setMovieRating(sc.nextLine());
+		
+		System.out.println("What is the movie's new genre?");
+		movieToUpdate.setMovieGenre(sc.nextLine());
+		
+		System.out.println("What is the movie's new length?");
+		movieToUpdate.setMovieLength(Integer.parseInt(sc.nextLine()));
+		
+		return movieToUpdate;
+	
+}
+
+	private static String updateToDB = "UPDATE `movies`.`movies`"
+			+ "SET"
+			+ " movie_id= ?, title= ?, rating= ?, genre= ?, length= ?"
+			+ " WHERE "
+			+ "`movie_id`"
+			+ "= ?";
+
+	public static Movie aboutTheMovie(){
+		
+		Movie movieToAdd = new Movie();
+		System.out.println("What is the movie's title?");
+		movieToAdd.setMovieTitle(sc.nextLine());
+		
+		System.out.println("What is the movie's rating?");
+		movieToAdd.setMovieRating(sc.nextLine());
+		
+		System.out.println("What is the movie's genre?");
+		movieToAdd.setMovieGenre(sc.nextLine());
+		
+		System.out.println("What is the movie's length?");
+		movieToAdd.setMovieLength(Integer.parseInt(sc.nextLine()));
+		
+		return movieToAdd;
+		
+		
+	}
+	public static Movie removedMovie(){
+		
+		Movie movieToDelete = new Movie();
+		
+		System.out.println("What is the ID of the movie you would like to delete?");
+		movieToDelete.setMovieID(sc.nextLine());
+		
+		return movieToDelete;
+		
+		
+	}
 }
