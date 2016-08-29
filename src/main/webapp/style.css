@@ -1,15 +1,17 @@
-@CHARSET "ISO-8859-1";
-header{
+
+h1{
 	text-align:center;
 	font-size: 32pt;
 	font-family: lucida;
 	color:white;
 	background-color:black;
+	border: .1em solid red;
+	
 }
 
-html { 
+body { 
   background: url(images/popcorn.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
+ -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -25,23 +27,29 @@ table{
 	color:white;
 	text-align: center;
 	table-layout: center;
-	margin:auto;
+	margin-left: 10em;
+	margin-right: 10em;
 	margin-top: 5em;
 	font-size: 18pt;
-
+	border: .25em solid red;
 }
-table, th, td {
+
+ th, td {
     border: 1px solid grey;
     border-collapse: collapse;
+    text-align: center;
 }
 form{
 	margin-top: 5em;
 	float:left;
 	font-weight: bold;
 }
+
 .one{
-	position: static;
+	width: 75%;
+	margin-left: 27em
 }
+
 .two {
 	float:left;
 	margin-top: 1px;
@@ -55,17 +63,39 @@ form{
 }
 h2{
 	text-align: center;
-	text-decoration: underline;
 	font-weight: bold;
-	text-decoration-style: 
+	color: white;
+	background-color: black;
 }
 .five{
 	float:right;
 	margin-right: 30em;
 }
 .four{
-	margin-left: 55em;
+	margin-left: 52em;
+
 }
 .three,.four,.five{
 	font-size: 12pt
+}
+input[type=text]{
+	margin-left: 1.75em;
+	width:75%;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+
+}
+button[type=submit]{
+	border: 2px solid black;
+    border-radius: 12px;	
+     -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    background-color: red;
+    color: white;
+
+}
+.panel{
+	background-color:black;
+	border-radius: 12px;
+	border: .15em solid red;
 }
