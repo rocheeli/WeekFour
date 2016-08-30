@@ -22,7 +22,7 @@ public class MovieTheater {
 				break;
 				
 			case "2":
-				DAO.writeToDB();	
+	//			DAO.writeToDB();	
 				break;
 				
 			case "3":

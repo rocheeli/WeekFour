@@ -6,7 +6,7 @@ public class Movie {
 	private String movieTitle = null;
 	private String movieRating = null;
 	private String movieGenre = null;
-	private int movieLength = 0;
+	private String movieLength = null;
 
 	public Movie() {
 		super();
@@ -44,11 +44,11 @@ public class Movie {
 		this.movieGenre = movieGenre;
 	}
 
-	public int getMovieLength() {
+	public String getMovieLength() {
 		return movieLength;
 	}
 
-	public void setMovieLength(int movieLength) {
+	public void setMovieLength(String movieLength) {
 		this.movieLength = movieLength;
 	}
 
